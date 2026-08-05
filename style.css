@@ -93,30 +93,30 @@ body {
 /* Livres sur une ligne horizontale */
 .livres {
     display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: stretch;
-    flex-wrap: nowrap;
     gap: 25px;
-    width: 95%;
-    max-width: 1200px;
     margin: 40px auto;
+    padding: 15px 25px; 
+    overflow-x: auto;
+    overflow-y: hidden;
+    box-sizing: border-box;
 }
 .carte-livre {
     display: flex;
     flex-direction: column;
-    flex: 1 1 0;
-    min-width: 0;
-    max-width: 320;
+    flex: 0 0 300px;
+    min-width: 300;
+    min-height: 500px;
     background-color: white;
     border-radius: 12px;
     overflow: hidden;
     text-align: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+    scroll-snap-align: start;
 }
 /* images de même taille */
 .carte-livre img {
     width: 100%;
-    height: 300px;
+    height: 320px;
     object-fit: cover;
     display: block;
 }
@@ -125,9 +125,11 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    flex-grow: 1;
     padding: 20px;
 }
 .contenu-carte h2 {
+    min-height: 70px;
     margin-bottom: 12px;
 }
 .contenu-carte p {
@@ -136,7 +138,7 @@ body {
 /* Bouton détail sur les trois cartes */
 .bouton {
     display: inline-block;
-    margin-top: 15px;
+    margin-top: 30px;
     padding: 10px 22px;
     background-color: #e67e22;
     color: white;
@@ -327,5 +329,68 @@ form {
     }
     .formulaire-contact h2 {
         font-size: 27px;
+    }
+}
+/* Liste verticale sous le carrousel */
+.liste-livres {
+    width: 90%;
+    max-width: 1000px;
+    margin: 60px auto;
+}
+.liste-livres > h2{
+    margin-bottom: 30px;
+    text-align: center;
+    font-size: 32px;
+}
+.livre-horizontal {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    margin-bottom: 25px;
+    padding: 20px;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.12);
+}
+/* Toutes les images ont la même taille */
+.livre-horizontal img {
+    width: 170px;
+    height: 230px;
+    flex-shrink: 0;
+    object-fit: cover;
+    border-radius: 8px;
+}
+.info-livre {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex: 1;
+    text-align: center;
+    align-items: center;
+}
+.info-livre h3 {
+    margin-bottom: 15px;
+    font-size: 25px;
+}
+.info-livre p {
+    margin-bottom: 10px;
+    line-height: 1.5;
+}
+/*Ici, le bouton ne doit pas utiliser mergin-top: auto */
+.info-livre .bouton {
+    margin-top: 15px;
+}
+/* Téléphone */
+@media screen and (max-wodth: 650px) {
+    .livre-horizontal {
+        flex-direction: column;
+        text-align: center;
+    }
+    .info-livre {
+        align-items: center;
+    }
+    .livre-horizontal img {
+        width: 200px;
+        height: 280;
     }
 }
