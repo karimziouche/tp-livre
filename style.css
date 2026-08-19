@@ -192,7 +192,9 @@ body {
 .detail-livre {
     max-width: 900px;
     margin: 40px auto;
-    text-align: center;
+    display: flex;
+    align-items: center;
+    gap: 40px;
 }
 /*Image */
 .detail-livre img {
@@ -201,6 +203,32 @@ body {
     object-fit: cover;
     display: block;
     margin: 0 auto 20px;
+}
+.detail-premiere-de-couverture {
+    display: none;
+}
+    #fleche:checked ~ .detail-image {
+        display: none;
+}
+    #fleche:checked ~ .detail-premiere-de-couverture {
+        display: block;
+    }
+.image-fleche {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.bouton-fleche {
+    width: 22px;
+    height: 22px;
+    border-top: 5px solid black;
+    border-right: 5px solid black;
+    transform: rotate(45deg);
+    cursor: pointer;
+    margin-top: 15px;
+}
+#fleche {
+    display: none;
 }
 /* Titre */
 .detail-livre h1 {
