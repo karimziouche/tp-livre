@@ -1,9 +1,20 @@
+<?php
+
+session_start();
+
+if (empty($_SESSION["name"])) {
+    header("Location: login.php");
+    exit;
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Le petit chaperon rouge</title>
+        <title>Harry Potter</title>
         <link rel="stylesheet" href="style.css">
     </head>
     <body>
@@ -15,8 +26,17 @@
                 <span></span>
             </label>
             <nav class="menu">
-                <a href="index.html">Accueil</a>
-                <a href="nous-contacter.html">Nous contacter</a>
+                <?php
+                    if (!empty($_SESSION["name"])) {
+                    echo "Bienvenu à " . $_SESSION["name"];
+                    } else {
+                    echo "Bienvenue à Donkey";
+                    }
+                ?>
+                <a href="index.php">Accueil</a>
+                <a href="cart.php">Mon panier</a>
+                <a href="nous-contacter.php">Nous contacter</a>
+                <a href="logout.php">Déconnexion</a>
             </nav>
             <h1>Ma bibliothèque</h1>
         </header>
@@ -25,19 +45,19 @@
                 <div class="image-fleche">
                 <input type="checkbox" id="fleche">
                     <div class="detail-image">
-                        <img src="lepetitchaperonrouge.jpg" alt="Le petit chaperon rouge">
+                        <img src="harrypotter.jpg" alt="Harry Potter">
                     </div>
                     <div class="detail-premiere-de-couverture">
-                        <img src="le-petit-chaperon-rouge-derriere.jpg" alt="Le petit chaperon rouge">
+                        <img src="harrypotter-derriere.jpg" alt="Harry Potter">
                     </div>
                     <label for="fleche" class="bouton-fleche"></label>
                 </div>
                 <div class="detail-contenu">
-                    <h2>Le petit chaperon rouge</h2>
-                    <p><strong>Auteur :</strong>Charles Perrault</p>
-                    <p><strong>Année :</strong>1697</p>
+                    <h2>Harry Potter à l'école des sorciers</h2>
+                    <p><strong>Auteur :</strong> J.K Rowling</p>
+                    <p><strong>Année :</strong> 1997</p>
                     <h3>Résumé</h3>
-                    <p>Une jeune fille traverse la forêt pour rendre visite à sa grande-mère, mais rencontre un loup rusé qui lui tend un piège. Un conte qui met en garde contre les dangers de faire confiance aux inconnus.</p>
+                    <p>Harry Potter découvre qu'il est un sorcier le jour de ses onze ans. Il entre à l'école de Poudlard où il se fait de nouveaux amis et affronte les forces du mal dirigées par Lord Voldemort.</p>
                     <a href="index.html" class="retour">Retour</a>
                 </div>
             </section>

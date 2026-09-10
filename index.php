@@ -1,3 +1,12 @@
+<?php
+
+session_start();
+
+if (!empty($_POST["book"])) {
+    $_SESSION["cart"][] = $_POST["book"];
+}
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -15,8 +24,17 @@
             <span></span>
         </label>
         <nav class="menu">
-            <a href="index.html">Accueil</a>
-            <a href="nous-contacter.html">Nous contacter</a>
+            <?php
+                if (!empty($_SESSION["name"])) {
+                echo "Bienvenu à " . $_SESSION["name"];
+                } else {
+                echo "Bienvenue à Donkey";
+                }
+            ?>
+            <a href="index.php">Accueil</a>
+            <a href="cart.php">Mon panier</a>
+            <a href="nous-contacter.php">Nous contacter</a>
+            <a href="logout.php">Déconnexion</a>
         </nav>
         <h1>Ma bibliothèque</h1>
     </header>
@@ -32,7 +50,15 @@
                     <h2>Le petit prince</h2>
                     <p>Antoine de Saint-exupéry</p>
                     <p>Publié en 1943</p>
-                    <a href="détail-le-petit-prince.html" class="bouton">Détail</a>
+                    <a href="détail-le-petit-prince.php" class="bouton">Détail</a>
+                    <form method="post">
+                        <button type="submit" 
+                                name="book"
+                                value="le-petit-prince"
+                                class="bouton">
+                            Ajouter au panier
+                        </button>
+                    </form>
                 </div>
             </article>
             <article class="carte-livre">
@@ -41,7 +67,15 @@
                     <h2>Harry Potter</h2>
                     <p>J.K Rowling</p>
                     <p>Publié en 1997</p>
-                    <a href="détail-harry-potter.html" class="bouton">Détail</a>
+                    <a href="détail-harry-potter.php" class="bouton">Détail</a>
+                    <form method="post">
+                        <button type="submit" 
+                                name="book"
+                                value="harry-potter"
+                                class="bouton">
+                            Ajouter au panier
+                        </button>
+                    </form>
                 </div>
             </article>
             <article class="carte-livre">
@@ -50,7 +84,15 @@
                     <h2>Robin des bois</h2>
                     <p>Howard Pyle</p>
                     <p>Publié en 1883</p>
-                    <a href="détail-robin-des-bois.html" class="bouton">Détail</a>
+                    <a href="détail-robin-des-bois.php" class="bouton">Détail</a>
+                    <form method="post">
+                        <button type="submit" 
+                                name="book"
+                                value="robin-des-bois"
+                                class="bouton">
+                            Ajouter au panier
+                        </button>
+                    </form>
                 </div>
             </article>
             <article class="carte-livre">
@@ -59,7 +101,15 @@
                     <h2>Les misérables</h2>
                     <p>Victor Hugo</p>
                     <p>Publié en 1862</p>
-                    <a href="détail-les-misérables.html" class="bouton">Détail</a>
+                    <a href="détail-les-misérables.php" class="bouton">Détail</a>
+                    <form method="post">
+                        <button type="submit" 
+                                name="book"
+                                value="les-misérables"
+                                class="bouton">
+                            Ajouter au panier
+                        </button>
+                    </form>
                 </div>
             </article>
             <article class="carte-livre">
@@ -68,7 +118,15 @@
                     <h2>Le petit chaperon rouge</h2>
                     <p>Charles Perrault</p>
                     <p>Publié en 1697</p>
-                    <a href="détail-le-petit-chaperon-rouge.html" class="bouton">Détail</a>
+                    <a href="détail-le-petit-chaperon-rouge.php" class="bouton">Détail</a>
+                    <form method="post">
+                        <button type="submit" 
+                                name="book"
+                                value="le-petit-chaperon-rouge"
+                                class="bouton">
+                            Ajouter au panier
+                        </button>
+                    </form>
                 </div>
             </article>
             <article class="carte-livre">
@@ -77,7 +135,15 @@
                     <h2>Le compte de monte cristo</h2>
                     <p>Alexander Dumas</p>
                     <p>Publié en 1844</p>
-                    <a href="détail-le-compte-de-monte-cristo.html" class="bouton">Détail</a>
+                    <a href="détail-le-compte-de-monte-cristo.php" class="bouton">Détail</a>
+                    <form method="post">
+                        <button type="submit" 
+                                name="book"
+                                value="le-compte-de-monte-cristo"
+                                class="bouton">
+                            Ajouter au panier
+                        </button>
+                    </form>
                 </div>
             </article>
         </section>
@@ -89,7 +155,15 @@
                     <h3>Le petit prince</h3>
                     <p><strong>Auteur :</strong>Antoine de Saint-Exupéry</p>
                     <p><strong>Année :</strong>1943</p>
-                    <a href="détail-le-petit-prince.html" class="bouton">Détail</a>
+                    <a href="détail-le-petit-prince.php" class="bouton">Détail</a>
+                    <form method="post">
+                        <button type="submit" 
+                                name="book"
+                                value="le-petit-prince"
+                                class="bouton">
+                            Ajouter au panier
+                        </button>
+                    </form>
                 </div>
             </article>
             <article class="livre-horizontal">
@@ -98,7 +172,15 @@
                     <h3>Harry Potter</h3>
                     <p><strong>Auteur :</strong>J.K Rowling</p>
                     <p><strong>Année :</strong>1997</p>
-                    <a href="détail-harry-potter.html" class="bouton">Détail</a>
+                    <a href="détail-harry-potter.php" class="bouton">Détail</a>
+                    <form method="post">
+                        <button type="submit" 
+                                name="book"
+                                value="harry-potter"
+                                class="bouton">
+                            Ajouter au panier
+                        </button>
+                    </form>
                 </div>
             </article>
             <article class="livre-horizontal">
@@ -107,7 +189,15 @@
                     <h3>Robin des bois</h3>
                     <p><strong>Auteur :</strong>Howard Pyle</p>
                     <p><strong>Année :</strong>1883</p>
-                    <a href="détail-robin-des-bois.html" class="bouton">Détail</a>
+                    <a href="détail-robin-des-bois.php" class="bouton">Détail</a>
+                    <form method="post">
+                        <button type="submit" 
+                                name="book"
+                                value="robin-des-bois"
+                                class="bouton">
+                            Ajouter au panier
+                        </button>
+                    </form>
                 </div>
             </article>
             <article class="livre-horizontal">
@@ -116,7 +206,15 @@
                     <h3>Les misérables</h3>
                     <p><strong>Auteur :</strong>Victor Hugo</p>
                     <p><strong>Année :</strong>1862</p>
-                    <a href="détail-les-misérables.html" class="bouton">Détail</a>
+                    <a href="détail-les-misérables.php" class="bouton">Détail</a>
+                    <form method="post">
+                        <button type="submit"
+                                name="book"
+                                value="les-misérables"
+                                class="bouton">
+                            Ajouter au panier
+                        </button>
+                    </form>
                 </div>
             </article>
             <article class="livre-horizontal">
@@ -125,7 +223,15 @@
                     <h3>Le petit chaperon rouge</h3>
                     <p><strong>Auteur :</strong>Charles Perrault</p>
                     <p><strong>Année :</strong>1697</p>
-                    <a href="détail-le-petit-chaperon-rouge.html" class="bouton">Détail</a>
+                    <a href="détail-le-petit-chaperon-rouge.php" class="bouton">Détail</a>
+                    <form method="post">
+                        <button type="submit"
+                                name="book"
+                                value="le-petit-chaperon-rouge"
+                                class="bouton">
+                            Ajouter au panier
+                        </button>
+                    </form>
                 </div>
             </article>
             <article class="livre-horizontal">
@@ -134,7 +240,15 @@
                     <h3>Le comte de Monte-Cristo</h3>
                     <p><strong>Auteur :</strong>Alexandre Dumas</p>
                     <p><strong>Année :</strong>1844</p>
-                    <a href="détail-le-compte-de-monte-cristo.html" class="bouton">Détail</a>
+                    <a href="détail-le-compte-de-monte-cristo.php" class="bouton">Détail</a>
+                    <form method="post">
+                        <button type="submit" 
+                                name="book"
+                                value="le-compte-de-monte-cristo"
+                                class="bouton">
+                            Ajouter au panier
+                        </button>
+                    </form>
                 </div>
             </article>
         </section>
@@ -143,7 +257,7 @@
                 <h2>A propos de notre bibliothèque</h2>
                 <p>Notre bibliothèque met en avant des oeuvres célèbres afin de permettre aux lecteurs de découvrir leurs auteurs, leurs dates de publication et leur histoire.</p>
             </div>
-            <a href="nous-contacter.html" class="bouton">Nous contacter</a>
+            <a href="nous-contacter.php" class="bouton">Nous contacter</a>
         </section>
         <section class="contact">
             <h2>Contact</h2>

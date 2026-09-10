@@ -1,3 +1,14 @@
+<?php
+
+session_start();
+
+if (empty($_SESSION["name"])) {
+    header("Location: login.php");
+    exit;
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
     <head>
@@ -15,8 +26,17 @@
                 <span></span>
             </label>
             <nav class="menu">
-                <a href="index.html">Accueil</a>
-                <a href="nous-contact.html">Nous contacter</a>
+                <?php
+                    if (!empty($_SESSION["name"])) {
+                    echo "Bienvenu à " . $_SESSION["name"];
+                    } else {
+                    echo "Bienvenue à Donkey";
+                    }
+                ?>
+                <a href="index.php">Accueil</a>
+                <a href="cart.php">Mon panier</a>
+                <a href="nous-contact.php">Nous contacter</a>
+                <a href="logout.php">Déconnexion</a>
             </nav>
             <h1>Ma bibliothèque</h1>
         </header>
